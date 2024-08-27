@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentS360</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script>
+        window.onscroll = function() { showScrollButton() };
+
+        function showScrollButton() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scrollToTopBtn").style.display = "block";
+        } else {
+            document.getElementById("scrollToTopBtn").style.display = "none";
+        }
+        }
+
+        function scrollToTop() {
+        document.body.scrollTop = 0; // Para navegadores Safari
+        document.documentElement.scrollTop = 0; // Para navegadores Chrome, Firefox, IE y Opera
+        }
+
+        
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach((tab) => {
+                tab.addEventListener('click', () => {
+                    const target = tab.dataset.target;
+
+                    tabs.forEach((t) => {
+                        t.classList.remove('active');
+                    });
+
+                    tab.classList.add('active');
+
+                    tabContents.forEach((content) => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <ul id="menu" class="menu-grande">
+                <li><a class="tab active" data-target="tab1" href="#tab1">INICIO</a></li>
+                <li><a class="tab" data-target="tab2" href="index.html#tab2">PRODUCTOS</a></li>
+                <li><a class="tab" data-target="tab3" href="#tab3">NOSOTROS</a></li>
+                <li><a class="tab" data-target="tab4" href="#tab4">COMPRA O ALQUILA</a></li>
+                <li><a class="tab" data-target="tab5" href="#tab5">PROYECTOS(MAPA)</a></li>
+            </ul>
+            <!-- Icon for dark mode toggle -->
+            <span id="dark-mode-toggle" onclick="toggleDarkMode()">🌙</span>
+        </nav>
+              
+        <div class="header-content">
+            <div class="contenedor-sobre-nosotros">
+                <img src="imagen/logo360.png" alt="" class="imagen-about-us1">
+                <div class="contenido-textos">
+                    <section class="textos-header">
+                        <h1>AgentS 360</h1>
+                        <h2>¡DESCUBRE EL MUNDO COMO NUNCA ANTES LO HABIAS VISTO!</h2>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </header>    
+    
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        function hideMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.remove('show');
+        }
+
+        // Añadir un listener para ocultar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            var menu = document.getElementById('menu');
+            var menuIcon = document.querySelector('.menu-icon');
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.classList.remove('show');
+            }
+        });
+
+    </script>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggleIcon = document.getElementById('dark-mode-toggle');
+            body.classList.toggle('dark-mode');
+
+            // Change the icon based on the mode
+            if (body.classList.contains('dark-mode')) {
+                toggleIcon.textContent = '☀️'; // Sun icon for light mode
+            } else {
+                toggleIcon.textContent = '🌙'; // Moon icon for dark mode
+            }
+        }
+    </script>
+    
+    
+    
+    <main>
+        <section id="tab1" class="tab-content active">
+            <section class="contenedor5">
+                <div class="header-container">
+                    <h2 class="titulo1">EXPLORA EL 360</h2>
+                    <div class="content-wrapper">
+                            <h3 class="subtitulo1">Conoce más sobre el espacio</h3>
+                            <p class="text-subtitulo1">
+                                Nuestros recorridos virtuales 360, creados con las herramientas avanzadas de Tridiar, permiten explorar espacios como si estuvieras allí. Con funciones interactivas como anotaciones, integración multimedia, mediciones precisas y compatibilidad con visores VR, ofrecemos una experiencia inmersiva y detallada, ideal para mostrar propiedades, proyectos arquitectónicos y más. Transformamos la manera en que experimentas y presentas espacios, combinando tecnología de punta con una navegación intuitiva y envolvente.
+                            </p>
+                            <div class="left-column"></div>
+                            <div class="funcionalidades-recorrido">
+                                <div class="funcionalidades-texto">
+                                    <h3>Funcionalidades del recorrido</h3>
+                                    <div class="funcionalidades-list">
+                                        <div class="funcionalidad-item">
+                                            <img src="/imagen/icono1.png" alt="Icono 1" class="funcionalidad-icon">
+                                            <p class="funcionalidad-info">
+                                                Desplazate por cada planta o piso del recorrido virtual.
+                                            </p>
+                                        </div>
+                                        <div class="funcionalidad-item">
+                                            <img src="/imagen/icono2.png" alt="Icono 2" class="funcionalidad-icon">
+                                            <p class="funcionalidad-info">
+                                                Inicia tu recorrido de manera automatica a traves de todos los espacios
+                                            </p>
+                                        </div>
+                                        <div class="funcionalidad-item">
+                                            <img src="imagen/icono3.png" alt="Icono 3" class="funcionalidad-icon">
+                                            <p class="funcionalidad-info">
+                                                Comparte el recorrido por medio de redes sociales o un link
+                                            </p>
+                                        </div>
+                                        <div class="funcionalidad-item">
+                                            <img src="imagen/icono4.png" alt="Icono 4" class="funcionalidad-icon">
+                                            <p class="funcionalidad-info">
+                                                VR mode, usando gafas de realidad virtual podras vivir la experiencia de una manera inmersiva
+                                            </p>
+                                        </div>
+                                        <div class="funcionalidad-item">
+                                            <img src="imagen/icono5.png" alt="Icono 5" class="funcionalidad-icon">
+                                            <p class="funcionalidad-info">
+                                                Pantalla completa, observa el recorrido en todo el espacio de tu pantalla
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recorrido-virtual-container">
+                                    <iframe src="https://tridiar.com/embed/619" width="100%" height="400" frameborder="0" allow="xr-spatial-tracking; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <section class="contact-banner">
+                            <div class="contact-container">
+                                <div class="left-column">
+                                    <div class="form-banner">
+                                        <form class="contact-form" action="https://formsubmit.co/agents360col@gmail.com" method="POST">
+                                            <h3>OFERTAR SU INMUEBLE CON NOSOTROS</h3>
+                                            <div class="form-group">
+                                                <label for="nombre">Nombre completo</label>
+                                                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="correo">Correo electrónico</label>
+                                                <input type="email" id="correo" name="correo" placeholder="Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="telefono">Número de teléfono</label>
+                                                <div class="telefono-container">
+                                                    <select id="codigo-pais" name="codigo-pais">
+                                                        <option value="57">🇨🇴 +57</option>
+                                                        <option value="1">🇺🇸 +1</option>
+                                                        <option value="52">🇲🇽 +52</option>
+                                                    </select>
+                                                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">Adicionales</label>
+                                                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Adicionales" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    <input type="checkbox" name="acepto" required>
+                                                    Acepto recibir información sobre ofertas inmobiliarias
+                                                </label>
+                                            </div>
+                                            <button type="submit">Enviar formulario</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="right-column">
+                                    <div class="image-banner">
+                                        <h2 class="titulo7">Contacta con nosotros</h2>
+                                        <img src="imagen/ejecutiva2.png" alt="Imagen Grande">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>                                                                        
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+        
+        <script>
+            document.querySelector('.contact-form').addEventListener('submit', function(event) {
+                const correo = document.getElementById('correo');
+                const telefono = document.getElementById('telefono');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const phoneRegex = /^\d{10,15}$/; 
+        
+                if (!emailRegex.test(correo.value)) {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                    event.preventDefault();
+                }
+        
+                if (!phoneRegex.test(telefono.value)) {
+                    alert('Por favor, introduce un número de teléfono válido.');
+                    event.preventDefault();
+                }
+            });
+        </script>
+        
+        
+        
+                    
+
+        <section id="tab2" class="tab-content">
+            <section class="contenedor sobre-nosotros">
+            <h2 class="titulo2">Lleva tu Propiedad al Siguiente Nivel</h2>
+            <p class="text-subtitulo1">
+                Publica tu propiedad en nuestro sitio web y destaca su valor con nuestros servicios profesionales. Ofrecemos recorridos virtuales 360, staging virtual y vuelos con dron, que transformarán la manera en que los potenciales compradores o arrendatarios experimentan tu espacio. Utiliza nuestro simulador de precios para obtener un estimado personalizado, y deja que nos encarguemos de presentar tu propiedad de la mejor manera posible, asegurando una visibilidad inigualable en el mercado.
+            </p>
+            <h4 class="subtitulo2">Servicios</h4>
+            </section>
+            <div class="recorridos-virtuales">
+                <div class="recorrido-item">
+                    <img src="imagen/360.jpg" alt="Recorrido 1" class="recorrido-thumbnail">
+                    <div class="recorrido-info">
+                        <h3>Recorridos Virtuales 360</h3>
+                        <p class="text-subtitulo4">Muestra tus espacios a través de la pantalla</p>
+                        <p>
+                            Nuestro servicio de Recorrido Virtual 360° ofrece una experiencia inmersiva que permite explorar cada detalle de tu propiedad desde cualquier lugar del mundo. Ideal para captar la atención de compradores potenciales, este servicio permite una visualización interactiva y accesible 24/7. Con la posibilidad de agregar anotaciones y contenido multimedia, además de la compatibilidad con visores VR, logramos que tu espacio destaque, atrayendo más interesados y facilitando decisiones de compra o alquiler.
+                        </p>
+                        <a href="https://tridiar.com/embed/619" class="recorrido-link" target="_blank">Ver Recorrido</a>
+                    </div>
+                </div>
+                <div class="recorrido-item">
+                    <img src="imagen/ejemplo_2.jpg" alt="Recorrido 2" class="recorrido-thumbnail">
+                    <div class="recorrido-info">
+                        <h3>Virtual Staging</h3>
+                        <p class="text-subtitulo4">Maneja y controla tus espacios a tu gusto</p>
+                        <p>
+                            El Virtual Staging es la solución perfecta para mostrar el verdadero potencial de una propiedad vacía. Mediante la incorporación digital de muebles y decoraciones personalizadas, transformamos cualquier espacio en un ambiente acogedor y atractivo, sin los costos ni la logística del staging tradicional. Este servicio ayuda a los compradores a visualizarse viviendo en el espacio, acelerando el proceso de venta y haciendo que tu propiedad resalte en un mercado competitivo.
+                        </p>
+                        <a href="https://tridiar.com/embed/620" class="recorrido-link" target="_blank">Ver Recorrido</a>
+                    </div>
+                </div>
+                <div class="recorrido-item">
+                    <img src="imagen/ejemplo_2.jpg" alt="Recorrido 2" class="recorrido-thumbnail">
+                    <div class="recorrido-info">
+                        <h3>Video con Dron</h3>
+                        <p class="text-subtitulo4">Amplia tu visión por los cielos</p>
+                        <p>
+                            Nuestro servicio de Video con Dron proporciona tomas aéreas impresionantes que capturan la totalidad de tu propiedad y su entorno. Ideal para grandes terrenos, desarrollos y propiedades con características únicas, este servicio ofrece videos de alta resolución que narran una historia visual poderosa, destacando los aspectos más importantes de la propiedad. Con esto, no solo aumentas la visibilidad en plataformas digitales, sino que también logras captar la atención de un público más amplio y cualificado.
+                        </p>
+                        <a href="https://tridiar.com/embed/620" class="recorrido-link" target="_blank">Ver Recorrido</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMULADOR -->
+            <div class="simulador_precio">
+                <div class="simulador-header">
+                    <h2>Simulador de Proyecto</h2>
+                    <img src="imagen/360_imagen.jpg" alt="Simulador de Proyecto" class="simulador-banner">
+                </div>
+
+                <!-- Selector de tipo de servicio -->
+                <div class="input-group">
+                    <label for="tipo-servicio">Selecciona servicios:</label>
+                    <div>
+                        <input type="checkbox" id="recorrido-360-checkbox" value="recorrido-360"> Recorrido virtual 360<br>
+                        <input type="checkbox" id="staging-checkbox" value="staging"> Puesta en Escena<br>
+                        
+                        <input type="checkbox" id="dron-checkbox" value="dron"> <br>Vuelo con Dron<br>
+                    </div>
+                </div>
+
+                <!-- Formularios de servicio -->
+                <div id="form-recorrido-360" class="service-form" style="display: none;">
+                    <div class="input-group">
+                        <label for="tipo-espacio-360">Tipo de espacio:</label>
+                        <select id="tipo-espacio-360">
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="edificio">Edificio</option>
+                            <option value="centro-comercial">Centro Comercial</option>
+                            <option value="auto">Auto</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="metros-360">Metros cuadrados:</label>
+                        <select id="metros-360">
+                            <option value="0-40">0-40 metros cuadrados</option>
+                            <option value="40-80">40-80 metros cuadrados</option>
+                            <option value="80-120">80-120 metros cuadrados</option>
+                            <option value="120-160">120-160 metros cuadrados</option>
+                            <option value="+160">+160 metros cuadrados</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="espacios-360">Número de espacios o cuartos:</label>
+                        <input type="number" id="espacios-360" placeholder="Incluye todos los espacios" min="1">
+                    </div>
+                    <button type="button" onclick="calcularRecorrido360Form()">Calcular</button>
+                    <div class="output-group">
+                        <label for="imagenes-360">Número de imágenes necesarias aproximadas:</label>
+                        <input type="text" id="imagenes-360" readonly>
+                    </div>
+                    <div class="output-group">
+                        <label for="tiempo-360">Tiempo estimado (días) aproximado:</label>
+                        <input type="text" id="tiempo-360" readonly>
+                    </div>
+                    <div class="output-group">
+                        <label for="precio-360">Precio aproximado del recorrido:</label>
+                        <input type="text" id="precio-360" readonly>
+                    </div>
+                </div>
+
+                <div id="form-staging" class="service-form" style="display: none;">
+                    <div class="input-group">
+                        <label for="espacios-staging">Cantidad de espacios o habitaciones:</label>
+                        <input type="number" id="espacios-staging" placeholder="Número de espacios o habitaciones" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="tipo-montaje">Tipo de montaje:</label>
+                        <select id="tipo-montaje">
+                            <option value="simple">Simple</option>
+                            <option value="intermedio">Intermedio</option>
+                            <option value="multiple">Múltiple</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="agregar-remover">Agregar/Remover elementos:</label>
+                        <input type="text" id="agregar-remover" placeholder="Describa si necesita agregar o remover elementos">
+                    </div>
+                    <div class="input-group">
+                        <label for="imagenes-staging">¿Cuenta con imágenes 360?</label>
+                        <select id="imagenes-staging">
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <button type="button" onclick="calcularStaging()">Calcular</button>
+                    <div class="output-group">
+                        <label for="precio-staging">Precio aproximado de la puesta en escena:</label>
+                        <input type="text" id="precio-staging" readonly>
+                    </div>
+                </div>
+
+                <div id="form-dron" class="service-form" style="display: none;">
+                    <div class="input-group">
+                        <label for="metros-dron">Metros cuadrados:</label>
+                        <input type="number" id="metros-dron" placeholder="Ingresa el tamaño en metros cuadrados" min="0">
+                    </div>
+                    <button type="button" onclick="calcularDron()">Calcular</button>
+                    <div class="output-group">
+                        <label for="precio-dron">Precio del vuelo con dron:</label>
+                        <input type="text" id="precio-dron" readonly>
+                    </div>
+                </div>
+
+                <div id="resultado-final" class="service-form" style="display: none;">
+                    <h3>Resumen de Servicios</h3>
+                    <p id="resumen-servicios"></p>
+                    <p>Recuerda que el número de imágenes es aproximado. Por favor, contacta con nosotros para una cotización personalizada.</p>
+                </div>
+            </div>
+
+            <script>
+                // Manejadores de eventos para los checkboxes
+                document.getElementById('recorrido-360-checkbox').addEventListener('change', toggleForm);
+                document.getElementById('staging-checkbox').addEventListener('change', toggleForm);
+                document.getElementById('dron-checkbox').addEventListener('change', toggleForm);
+
+                function toggleForm() {
+                    document.getElementById('form-recorrido-360').style.display = document.getElementById('recorrido-360-checkbox').checked ? 'block' : 'none';
+                    document.getElementById('form-staging').style.display = document.getElementById('staging-checkbox').checked ? 'block' : 'none';
+                    document.getElementById('form-dron').style.display = document.getElementById('dron-checkbox').checked ? 'block' : 'none';
+
+                    mostrarResumen();  // Actualiza el resumen al cambiar la selección
+                }
+
+                function calcularRecorrido360Form() {
+                    var metros = document.getElementById('metros-360').value;
+                    var espacios = document.getElementById('espacios-360').value;
+                    var resultado = calcularRecorrido360(metros, espacios);
+
+                    document.getElementById('imagenes-360').value = resultado.imagenes;
+                    document.getElementById('tiempo-360').value = resultado.tiempo;
+                    document.getElementById('precio-360').value = resultado.precio;
+
+                    mostrarResumen();  // Actualiza el resumen después de calcular
+                }
+
+                function calcularRecorrido360(metros, espacios) {
+                    var imagenes, tiempo, precio;
+
+                    // Ejemplo de cálculo, ajustar según necesidades
+                    if (metros <= 40) {
+                        imagenes = '5 imágenes';
+                        tiempo = '2 días';
+                        precio = '$500';
+                    } else if (metros <= 80) {
+                        imagenes = '10 imágenes';
+                        tiempo = '3 días';
+                        precio = '$800';
+                    } else if (metros <= 120) {
+                        imagenes = '15 imágenes';
+                        tiempo = '4 días';
+                        precio = '$1200';
+                    } else {
+                        imagenes = '20 imágenes';
+                        tiempo = '5 días';
+                        precio = '$1500';
+                    }
+
+                    return { imagenes: imagenes, tiempo: tiempo, precio: precio };
+                }
+
+                function calcularStaging() {
+                    var tipoMontaje = document.getElementById('tipo-montaje').value;
+                    var espacios = document.getElementById('espacios-staging').value;
+                    var precio;
+
+                    switch (tipoMontaje) {
+                        case 'simple':
+                            precio = '$100';
+                            break;
+                        case 'intermedio':
+                            precio = '$200';
+                            break;
+                        case 'multiple':
+                            precio = '$350';
+                            break;
+                        default:
+                            precio = '$0';
+                    }
+
+                    document.getElementById('precio-staging').value = precio;
+
+                    mostrarResumen();  // Actualiza el resumen después de calcular
+                }
+
+                function calcularDron() {
+                    var metros = document.getElementById('metros-dron').value;
+                    var precio = '$180'; // Precio fijo para el vuelo con dron
+
+                    document.getElementById('precio-dron').value = precio;
+
+                    mostrarResumen();  // Actualiza el resumen después de calcular
+                }
+
+                function mostrarResumen() {
+                    var resumen = '';
+
+                    if (document.getElementById('recorrido-360-checkbox').checked) {
+                        resumen += 'Recorrido virtual 360: ' + document.getElementById('precio-360').value + '<br>';
+                    }
+                    if (document.getElementById('staging-checkbox').checked) {
+                        resumen += 'Puesta en Escena: ' + document.getElementById('precio-staging').value + '<br>';
+                    }
+                    if (document.getElementById('dron-checkbox').checked) {
+                        resumen += 'Vuelo con Dron: ' + document.getElementById('precio-dron').value + '<br>';
+                    }
+
+                    if (resumen === '') {
+                        document.getElementById('resumen-servicios').innerHTML = 'No has seleccionado ningún servicio.';
+                    } else {
+                        document.getElementById('resumen-servicios').innerHTML = resumen;
+                    }
+
+                    document.getElementById('resultado-final').style.display = resumen === '' ? 'none' : 'block';
+                }
+            </script>
+        </section>
+
+
+        <section id="tab3" class="tab-content">
+            <div class="carta-navegable">
+                <div class="carta-navegable-texto">
+                    <div class="pagina active" id="presentacion">
+                        <h2 class="titulo3">PÁRRAFO DE PRESENTACIÓN</h2>
+                        <p>En AgentS360, transformamos la manera en que se exploran y comercializan propiedades en Colombia. Como pioneros en la integración de tecnología avanzada, ofrecemos servicios de virtual staging, recorridos virtuales 360° y vuelos con dron que permiten a nuestros clientes visualizar cada detalle de sus espacios desde cualquier lugar del mundo. Fundados por dos jóvenes ingenieros topográficos apasionados por la innovación, nuestra misión es brindar a propietarios e inmobiliarias una herramienta poderosa y precisa para destacar sus propiedades en el mercado. Nos enorgullece ser una empresa que valora la confianza, la seguridad, la precisión y el detalle, comprometida con liderar el sector inmobiliario y tecnológico del país. ¡Descubre una nueva perspectiva con AgentS360!</p>
+                    </div>
+                    <div class="pagina" id="mision">
+                        <h2 class="titulo3">MISIÓN</h2>
+                        <p>Nuestra misión es revolucionar el sector inmobiliario en Colombia proporcionando herramientas innovadoras y tecnológicas que permitan a los interesados en comprar, alquilar o vender propiedades visualizar cada espacio con máximo detalle. A través de recorridos virtuales 360°, virtual staging y vuelos con dron, buscamos ofrecer una experiencia inmersiva y precisa que facilite la toma de decisiones informadas, mejorando así la presentación y comercialización de los inmuebles.</p>
+                    </div>
+                    <div class="pagina" id="vision">
+                        <h2 class="titulo3">VISIÓN</h2>
+                        <p>Nuestra visión es convertirnos en la empresa líder del sector inmobiliario y tecnológico en Colombia, siendo pioneros en la adopción de tecnologías avanzadas y ofreciendo un servicio de calidad superior. Aspiramos a ser el sitio web más visitado y confiable para la visualización de propiedades, siempre a la vanguardia de la innovación y comprometidos con proporcionar a nuestros clientes una experiencia excepcional y detallada.</p>
+                    </div>
+                </div>
+                <div class="carta-navegable-imagen">
+                    <img id="imagen-carta" src="imagen/foto_nosotros.jpg" alt="Descripción de la imagen">
+                </div>
+                <div class="navegacion">
+                    <button id="prev-btn">&#9664;</button>
+                    <button id="next-btn">&#9654;</button>
+                </div>
+            </div>
+            
+            <script>
+                var imagenes = {
+                    'presentacion': '/imagen/foto_nosotros.jpg',
+                    'mision': '/imagen/mision.png',
+                    'vision': '/imagen/vision.png'
+                };
+            
+                var paginas = document.querySelectorAll('.pagina');
+                var imagenCarta = document.getElementById('imagen-carta');
+                var index = 0;
+            
+                document.getElementById('next-btn').addEventListener('click', function() {
+                    paginas[index].classList.remove('active');
+                    index = (index + 1) % paginas.length;
+                    paginas[index].classList.add('active');
+                    actualizarImagen();
+                });
+            
+                document.getElementById('prev-btn').addEventListener('click', function() {
+                    paginas[index].classList.remove('active');
+                    index = (index - 1 + paginas.length) % paginas.length;
+                    paginas[index].classList.add('active');
+                    actualizarImagen();
+                });
+            
+                function actualizarImagen() {
+                    var idPagina = paginas[index].id;
+                    imagenCarta.src = imagenes[idPagina];
+                }
+            </script>
+    
+             <section class="contenedor sobre-nosotros">
+                <h2 class="titulo4">Nuestro grupo de trabajo</h2>
+                </section>
+            <div class="carta">
+                <div class="carta-imagen">
+                    <img src="imagen/carnet_cusi1.jpeg" alt="Descripción de la imagen">
+                </div>
+                <div class="carta-texto">
+                    <h2>Santiago Cusi Romero - Coordinador de Proyectos</h2>
+                    <p>Santiago Cusi Romero, ingeniero topográfico de la Universidad del Valle, es el cerebro detrás de la coordinación de nuestros proyectos. Con una mente analítica y una dedicación inquebrantable, se asegura de que cada proyecto se ejecute con precisión y eficiencia. Originario de Santiago de Cali, su juventud y energía se reflejan en su capacidad para afrontar desafíos y llevar a cabo innovaciones que posicionan a nuestra empresa a la vanguardia del mercado.</p>
+                </div>
+            </div>
+            <div class="carta">
+                <div class="carta-imagen">
+                    <img src="imagen/carnet_salazar.jpeg" alt="Descripción de la imagen">
+                </div>
+                <div class="carta-texto">
+                    <h2>Santiago Salazar Zambrano - Director General</h2>
+                    <p>Ingeniero topográfico egresado de la Universidad del Valle, Santiago Salazar Zambrano lidera nuestro equipo con una visión clara y un enfoque innovador. Como Director General, combina su sólida formación académica con una pasión por la tecnología y el desarrollo de soluciones avanzadas en el sector inmobiliario. Nacido y criado en Santiago de Cali, Santiago es un joven con un gran potencial, comprometido con transformar la manera en que se visualizan y promocionan los bienes raíces en Colombia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab4" class="tab-content">
+            <div class="apartment-card">
+                <div class="card-header">
+                    <div class="virtual-tour">
+                        <!-- Aquí se embebe el recorrido virtual -->
+                        <iframe src="https://tridiar.com/embed/619" width="100%" height="400" frameborder="0" allow="xr-spatial-tracking; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="description">
+                        <h2>Título del Apartamento</h2>
+                        <p class="short-description">Descripción corta del apartamento que capta la atención del visitante.</p>
+                        <ul class="features">
+                            <li>Características destacadas 1</li>
+                            <li>Características destacadas 2</li>
+                            <li>Características destacadas 3</li>
+                        </ul>
+                        <div class="buttons">
+                            <button onclick="verEnMapa()">Ver en Mapa</button>
+                            <button onclick="meInteresa()">Me Interesa</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="more-info">
+                        <div class="additional-info">
+                            <!-- Aquí se puede agregar información adicional o imágenes del apartamento -->
+                            <img src="/imagen/dron.jpg" alt="Apartamento">
+                            <p>Más información detallada sobre el apartamento...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <script>
+            document.querySelector('.apartment-card').addEventListener('click', function() {
+                this.classList.toggle('expanded');
+            });
+
+            function verEnMapa() {
+                // Navegar a la sección 5 (Proyectos (Mapa))
+                const targetSection = document.getElementById('tab5');
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Opcional: Si necesitas ocultar el menú después de hacer clic
+                hideMenu();
+            }
+
+            function meInteresa() {
+                // Abrir WhatsApp con el número especificado
+                window.location.href = 'https://wa.me/573225978297';
+            }
+
+            function hideMenu() {
+                // Lógica para ocultar el menú (si corresponde)
+                const menu = document.getElementById('menu');
+                if (menu) {
+                    menu.style.display = 'none';
+                }
+            }
+        </script>
+        
+        
+
+        <section id="tab5" class="tab-content">
+            <!-- Contenido de experience builder-->
+            <iframe src="https://experience.arcgis.com/experience/91f13e51224144869e3363bd4e0dbd35/" width="100%" height="800" frameborder="0"></iframe>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Contenido del pie de página -->
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>Telefono</h4>
+                <p> +57 3225978297 </p>
+                <p> +57 3137206495 </p>
+            </div>
+            <div class="content-foo">
+                <h4>Correo</h4>
+                <p> agents360col@gmail.com </p>
+            </div>
+            <div class="content-foo">
+                <h4>Instagram</h4>
+                <p> agents360.col </p>
+            </div>
+            <div class="content-foo">
+                <h4>linkeln</h4>
+                <p> AgentS 360 </p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; AgentS360 | 2024  </h2>
+    </footer>
+<button id="scrollToTopBtn" onclick="scrollToTop()">&#8679; Subir</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
